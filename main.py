@@ -1,19 +1,17 @@
+from stats import get_num_words
 
 def main():
     with open("books/frankenstein.txt") as f:
         file_contents = f.read()
     dictionary = char_count(file_contents)
     print("--- Begin report of books/frankenstein.txt ---")
-    num_words = word_count(file_contents)
+    num_words = get_num_words(file_contents)
     print(f"{num_words} words found in the document \n")
     for char in dictionary:
 
         if char.isalpha() is True:
             print(f"The \'{char}\' character was found {dictionary[char]} times")
     print("--- End report ---")
-
-def word_count(file):
-    return len(file.split())
 
 def char_count(file):
     dictionary = {}
