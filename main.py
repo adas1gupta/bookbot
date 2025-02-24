@@ -1,7 +1,12 @@
 from stats import get_num_words
+import sys
 
 def main():
-    with open("books/frankenstein.txt") as f:
+    if len(sys.argv) != 2:
+	    print("Usage: python3 main.py <path_to_book>")
+	    sys.exit(1)
+
+    with open(sys.argv[1]) as f:
         file_contents = f.read()
     dictionary = char_count(file_contents)
     print("--- Begin report of books/frankenstein.txt ---")
@@ -10,7 +15,7 @@ def main():
     for char in dictionary:
 
         if char.isalpha() is True:
-            print(f"The \'{char}\' character was found {dictionary[char]} times")
+            print(f"{char}: {dictionary[char]}")
     print("--- End report ---")
 
 def char_count(file):
